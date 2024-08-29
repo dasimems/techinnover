@@ -1,6 +1,6 @@
 import { useTaskContext } from "@/context/TaskProvider";
+import { retrieveTaskFromLocalStorage } from "@/services";
 import { TaskType } from "@/utils/types";
-import { localStorageKey } from "@/utils/variables";
 import React, { useCallback } from "react";
 
 const useTasks = () => {
@@ -48,7 +48,7 @@ const useTasks = () => {
 
   const fetchTasks = useCallback(() => {
     try {
-      const tasks = localStorage.getItem(localStorageKey);
+      const tasks = retrieveTaskFromLocalStorage();
       if (tasks) {
         setTasks(JSON.parse(tasks));
       }

@@ -1,4 +1,5 @@
 import { initialValue, reducer } from "@/reducer/taskReducer";
+import { saveTaskToLocalStorage } from "@/services";
 import {
   SET_CLICKED_TASK_CLASS,
   SET_SELECTED_TASK,
@@ -6,7 +7,6 @@ import {
   SET_TASK_ERROR
 } from "@/utils/enums";
 import { TaskStatusType, TaskType } from "@/utils/types";
-import { localStorageKey } from "@/utils/variables";
 import { createContext, useCallback, useContext, useReducer } from "react";
 import { toast } from "react-toastify";
 
@@ -25,7 +25,7 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const setTasks = useCallback((payload: TaskType[]) => {
     try {
-      localStorage.setItem(localStorageKey, JSON.stringify(payload));
+      saveTaskToLocalStorage(JSON.stringify(payload));
       dispatch({
         type: SET_TASK,
         payload
