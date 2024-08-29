@@ -67,7 +67,7 @@ const Nav = () => {
         }}
       >
         <div className="h-screen overflow-y-auto bg-white w-[95vw]">
-          <div className="p-10 flex items-center gap-10 justify-between sticky top-0">
+          <div className="p-10 flex items-center gap-10 justify-between sticky top-0 bg-white z-10">
             <Image
               src={LogoImage}
               alt={`${siteName} logo`}
