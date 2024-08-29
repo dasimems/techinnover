@@ -298,6 +298,17 @@ const AddTaskModal = () => {
                                   inputElement.value = "";
                                   return;
                                 }
+
+                                if (selectedFile.size > 500 * 1024) {
+                                  toast.error(
+                                    "The selected image size exceeds 500kb. Please try again with image not more than 500kb",
+                                    {
+                                      autoClose: 5000
+                                    }
+                                  );
+                                  inputElement.value = "";
+                                  return;
+                                }
                                 const tempImageUrl =
                                   URL.createObjectURL(selectedFile);
                                 setTemporaryImage({
